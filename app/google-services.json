@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "188665716397",
+    "firebase_url": "https://androiddisableservicemessagine.firebaseio.com",
+    "project_id": "androiddisableservicemessagine",
+    "storage_bucket": "androiddisableservicemessagine.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188665716397:android:c7a9e16c9a662cd5",
+        "android_client_info": {
+          "package_name": "com.seb.sebastien.appservices"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "188665716397-qdvc1c0svvjp5qh6s9saafd9bqb0clji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seb.sebastien.appservices",
+            "certificate_hash": "ce3d00cb621e52deaeb3370bb73617f4387fb749"
+          }
+        },
+        {
+          "client_id": "188665716397-2ttbf0sf1mpm2e5v791osr2gtaron5l2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA7xYMH1ebQfOMsIYTPjwSLNuPHKRjtHA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "188665716397-2ttbf0sf1mpm2e5v791osr2gtaron5l2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

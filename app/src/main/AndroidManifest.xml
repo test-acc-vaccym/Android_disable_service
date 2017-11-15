@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.seb.sebastien.appservices">
+    package="com.seb.sebastien.appservices"
+    android:minSdkVersion="8">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -17,9 +20,23 @@
             </intent-filter>
         </activity>
 
+        <service android:name=".appFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
         <service
-            android:name=".EnDisAppIntentService"
-            android:exported="false"></service>
+            android:name=".appFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".SimNotificationService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
