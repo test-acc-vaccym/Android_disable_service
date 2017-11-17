@@ -12,7 +12,7 @@ import static android.content.ContentValues.TAG;
  * Created by sebastien on 11/15/17.
  */
 
-public class appFirebaseInstanceIdService extends FirebaseInstanceIdService {
+public class AppFirebaseInstanceIdService extends FirebaseInstanceIdService {
     @Override
     public void onTokenRefresh() {
         // Get updated InstanceID token.

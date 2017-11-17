@@ -18,6 +18,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,11 +28,28 @@ public class MainActivity extends AppCompatActivity {
     private static final String EXTRA_SIM_STATE = "ss";
     private String type_sim;
 
+    private ServiceControler myAtt;
+    private ServiceControler myTmo;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        ArrayList<String> attList = new ArrayList<>();
+        attList.add(AttService.MESSAGING);
+        attList.add(AttService.PHOTOS);
+        attList.add(AttService.YOUTUBE);
+        myAtt = new ServiceControler(this, "ATT", attList);
+
+
+        ArrayList<String> tmoList = new ArrayList<>();
+        tmoList.add(TmoService.CALENDAR);
+        tmoList.add(TmoService.CLOCK);
+        myTmo = new ServiceControler(this, "TMO", tmoList);
 
         ToggleButton serviceToggleButton = (ToggleButton) findViewById(R.id.serviceOnOff);
 
@@ -78,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.d(TAG, "Broadcast received");
-            if (intent.getExtras().getString(appFirebaseMessagingService.FIREBASE).equals(appFirebaseMessagingService.FIREBASE))
-                type_sim = intent.getExtras().getString(appFirebaseMessagingService.SIM_TYPE);
+            if (intent.getExtras().getString(AppFirebaseMessagingService.FIREBASE).equals(AppFirebaseMessagingService.FIREBASE))
+                type_sim = intent.getExtras().getString(AppFirebaseMessagingService.SIM_TYPE);
             else if(intent.getExtras().getString(SimNotificationService.EXTRA_SIM_STATE) != null)
                 Log.d(TAG, "Get something from Sim");
             else
@@ -93,12 +111,19 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleAction(String type_of_sim){
         Log.d(TAG, "THIS IS MY CARRIER: " + type_of_sim);
+        if(type_of_sim.equals("TMO")){
+            myTmo.disableService();
+            myAtt.enableService();
+        } else if (type_of_sim.equals("ATT")){
+            myAtt.disableService();
+            myTmo.enableService();
+        }
     }
 
 
     private void registerAllReceivers(){
         Log.d(TAG, "Broadcast receiver register");
-        registerReceiver(serviceBroadcastReceiver, new IntentFilter(appFirebaseMessagingService.INTENT_FILTER));
+        registerReceiver(serviceBroadcastReceiver, new IntentFilter(AppFirebaseMessagingService.INTENT_FILTER));
     }
 
     private void unRegisterAllReceivers() {

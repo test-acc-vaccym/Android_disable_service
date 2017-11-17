@@ -7,14 +7,14 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-public class appFirebaseMessagingService extends FirebaseMessagingService {
+public class AppFirebaseMessagingService extends FirebaseMessagingService {
 
     public static final String TAG = "appFirebaseMessagingService";
     public static final String INTENT_FILTER = "INTENT_FILTER";
     public static final String FIREBASE = "firebase";
     public static final String SIM_TYPE = "simtype";
 
-    public appFirebaseMessagingService() {
+    public AppFirebaseMessagingService() {
     }
 
    /* @Override
